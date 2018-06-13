@@ -2,7 +2,7 @@
 	if (!defined('BASEPATH'))
 		exit ('No direct script access allowed!');
 	
-	class LockerModel extends CI_Model
+	class Lockermodel extends CI_Model
 	{
 		function __construct() 
 		{
@@ -13,7 +13,8 @@
 		//Get all lockers (whether available or not)
 		function get_locker_list_all()
 		{
-			$this->db->select('ID', 'Name');
+			$this->db->select('ID');
+			$this->db->select('Name');
 			$this->db->from('tbl_locker');
 			$query = $this->db->get();
 			$result = $query->result();
@@ -22,8 +23,8 @@
 			for ($i = 0; $i < count($result); $i++)
 			{
 				$list[$i] = (object)NULL;
-				$list[$i]->LockerID->$result[$i]->ID;
-				$list[$i]->Name->$result[$i]->Name;
+				$list[$i]->LockerID = $result[$i]->ID;
+				$list[$i]->Name = $result[$i]->Name;
 			}
 			
 			return $list;
