@@ -18,7 +18,7 @@
 			$alllockers = $this->Lockermodel->get_locker_list_all();
 			$data['lockerlist'] = $alllockers;
 			//Load the view
-			$this->load->view('Dashboard', $data);
+			$this->load->view('home', $data);
 		}
 		
 /* 		public function dashboard()
